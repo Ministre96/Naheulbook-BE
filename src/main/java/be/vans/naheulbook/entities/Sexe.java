@@ -1,4 +1,4 @@
-package be.vans.lemaggistral.temp;
+package be.vans.naheulbook.entities;
 
 public enum Sexe {
     Man,

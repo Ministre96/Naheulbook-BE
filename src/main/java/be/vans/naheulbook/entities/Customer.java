@@ -1,8 +1,9 @@
 package be.vans.naheulbook.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -11,7 +12,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class User extends BaseEntity<Integer>{
+public class Customer extends BaseEntity<Integer>{
     @Column(nullable = false, unique = true)
     private String pseudo;
 
@@ -20,4 +21,10 @@ public class User extends BaseEntity<Integer>{
 
     @Column(nullable = false, unique = true)
     private String mail;
+
+    @OneToMany()
+    private List<Character> characters;
+
+    @ManyToMany(targetEntity = Customer.class)
+    private List<Character> subsribe;
 }

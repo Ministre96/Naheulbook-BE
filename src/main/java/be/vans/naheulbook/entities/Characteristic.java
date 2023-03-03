@@ -1,7 +1,9 @@
-package be.vans.lemaggistral.temp;
+package be.vans.naheulbook.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.*;
 
 @Entity
@@ -13,6 +15,7 @@ import lombok.*;
 @Builder
 public class Characteristic extends BaseEntity<Integer>{
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CharacteristicName name;
 

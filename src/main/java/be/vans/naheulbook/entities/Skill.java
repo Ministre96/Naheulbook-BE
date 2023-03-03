@@ -1,4 +1,4 @@
-package be.vans.lemaggistral.temp;
+package be.vans.naheulbook.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
