@@ -1,4 +1,4 @@
-package be.vans.naheulbook.entities;
+package be.vans.naheulbook.models.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

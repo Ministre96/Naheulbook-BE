@@ -1,9 +1,8 @@
-package be.vans.naheulbook.entities;
+package be.vans.naheulbook.models.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
 import lombok.*;
 
 import java.util.List;
@@ -15,13 +14,18 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-public class Job extends BaseEntity<Integer> {
-
+public class Origin extends BaseEntity<Integer>{
     @Column(nullable = false)
     private String name;
 
     private String desription;
 
     @ManyToMany()
-    private List<Characteristic> requierement;
+    private List<Characteristic> requierements;
+
+    @ManyToMany(targetEntity = Skill.class)
+    private List<Skill> heritatedSkill;
+
+    @ManyToMany(targetEntity = Skill.class)
+    private List<Skill> skillToChose;
 }

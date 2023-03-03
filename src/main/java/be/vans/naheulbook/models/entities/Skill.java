@@ -1,8 +1,11 @@
-package be.vans.naheulbook.entities;
+package be.vans.naheulbook.models.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
 import lombok.*;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -16,4 +19,10 @@ public class Skill extends BaseEntity<Integer>{
     private String name;
 
     private String desription;
+
+    @ManyToMany
+    private List<Origin> originAccessibilities;
+    @ManyToMany
+    private List<Job> jobAccessibilities;
+
 }
