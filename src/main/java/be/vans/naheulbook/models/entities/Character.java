@@ -19,8 +19,6 @@ public class Character extends BaseEntity<Integer>{
     @Column(nullable = false)
     private String lastname;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Sexe sexe;
 
     @Column(nullable = false)

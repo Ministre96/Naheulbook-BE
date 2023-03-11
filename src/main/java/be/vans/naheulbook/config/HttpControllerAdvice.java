@@ -1,7 +1,7 @@
 package be.vans.naheulbook.config;
 
 import be.vans.naheulbook.exceptions.HttpException;
-import be.vans.naheulbook.models.dto.HttpExceptionDTO;
+import be.vans.naheulbook.models.dtos.HttpExceptionDTO;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

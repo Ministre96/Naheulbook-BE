@@ -1,4 +1,4 @@
-package be.vans.naheulbook.models.dto;
+package be.vans.naheulbook.models.dtos;
 
 import lombok.Builder;
 import lombok.Data;

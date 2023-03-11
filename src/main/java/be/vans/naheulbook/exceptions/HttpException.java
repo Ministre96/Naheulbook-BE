@@ -1,6 +1,6 @@
 package be.vans.naheulbook.exceptions;
 
-import be.vans.naheulbook.models.dto.HttpExceptionDTO;
+import be.vans.naheulbook.models.dtos.HttpExceptionDTO;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
