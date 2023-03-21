@@ -3,6 +3,7 @@ package be.vans.naheulbook.models.entities;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
+import jakarta.validation.Constraint;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 

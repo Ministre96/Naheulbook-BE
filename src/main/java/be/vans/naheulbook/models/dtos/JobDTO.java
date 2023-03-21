@@ -14,6 +14,7 @@ import java.util.List;
 @Builder
 public class JobDTO {
 
+    private int id;
     private String name;
 
     private String description;
@@ -29,6 +30,7 @@ public class JobDTO {
     public static JobDTO toDTO(Job job) {
         JobDTO.JobDTOBuilder dto = JobDTO.builder();
         return dto
+                .id(job.getId())
                 .name(job.getName())
                 .description(job.getDescription())
                 .requierement(job.getRequierement())

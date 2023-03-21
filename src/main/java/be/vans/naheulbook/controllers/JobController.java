@@ -27,6 +27,7 @@ public class JobController {
     public ResponseEntity<Collection<JobDTO>> getAllAction(
             Pageable pageable
     ){
+
         return ResponseEntity.ok(this.jobService.readAllByActive(pageable).map(JobDTO :: toDTO).toList());
     }
 
@@ -58,7 +59,7 @@ public class JobController {
      return ResponseEntity.ok(JobDTO.toDTO(job));
     }
 
-    @DeleteMapping("/{id:[0-9]+}")
+    @DeleteMapping(path="/{id:[0-9]+}")
     public ResponseEntity<JobDTO> deleteAction(
             @PathVariable int id
     ){
