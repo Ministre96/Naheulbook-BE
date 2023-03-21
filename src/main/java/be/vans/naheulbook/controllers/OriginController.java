@@ -1,5 +1,6 @@
 package be.vans.naheulbook.controllers;
 
+import be.vans.naheulbook.exceptions.HttpNotFoundException;
 import be.vans.naheulbook.exceptions.HttpPreConditionFailedException;
 import be.vans.naheulbook.models.dtos.CharacterDTO;
 import be.vans.naheulbook.models.dtos.JobDTO;
@@ -43,6 +44,34 @@ public class OriginController {
         }catch (Exception exception){
             throw new HttpPreConditionFailedException(exception.getMessage(), new ArrayList<>());
         }
+        return ResponseEntity.ok(OriginDTO.toDTO(origin));
+    }
+
+    @PutMapping(path="/{id:[0-9]+}")
+    public ResponseEntity<OriginDTO> updateOneAction(
+            @PathVariable int id,
+            @Valid @RequestBody OriginAddForm originAddForm
+    ){
+        Origin origin = this.originService.readOneByKey(id).orElseThrow(() ->
+                new HttpNotFoundException("There is no origin with id :("+ id +")"));
+        origin.setName(originAddForm.getName());
+        origin.setDescription(originAddForm.getDescription());
+        origin.setRequierements(originAddForm.getRequierements());
+        origin.setHeritatedSkill(originAddForm.getHeritatedSkill());
+        origin.setSkillToChoose(originAddForm.getSkillToChoose());
+
+        this.originService.save(origin);
+        return ResponseEntity.ok(OriginDTO.toDTO(origin));
+    }
+
+    @DeleteMapping(path="/{id:[0-9]+}")
+    public ResponseEntity<OriginDTO> deleteAction(
+            @PathVariable int id
+    ){
+        Origin origin = this.originService.readOneByKey(id).orElseThrow(() ->
+                new HttpNotFoundException("origin doesn't exist"));
+        origin.setActive(false);
+        this.originService.save(origin);
         return ResponseEntity.ok(OriginDTO.toDTO(origin));
     }
 

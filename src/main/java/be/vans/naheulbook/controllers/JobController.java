@@ -30,6 +30,33 @@ public class JobController {
         return ResponseEntity.ok(this.jobService.readAllByActive(pageable).map(JobDTO :: toDTO).toList());
     }
 
+    @PostMapping("")
+    public ResponseEntity<JobDTO> addJobAction(
+            @Valid @RequestBody JobAddForm jobAddForm
+    ){
+        Job job = new Job();
+        job = this.jobService.save(jobAddForm.toBll());
+        return ResponseEntity.ok(JobDTO.toDTO(job));
+    }
+
+    @PutMapping(path="/{id:[0-9]+}")
+    public ResponseEntity<JobDTO> updateOne(
+            @PathVariable int id,
+            @Valid @RequestBody JobAddForm jobAddForm
+    ){
+     Job job = this.jobService.readOneByKey(id).orElseThrow(() ->
+             new HttpNotFoundException("There is no job with id:("+ id + ")"));
+
+     job.setName(jobAddForm.getName());
+     job.setDescription(jobAddForm.getDescription());
+     job.setRequierement(jobAddForm.getRequierement());
+     job.setBannedOrigin(jobAddForm.getBannedOrigin());
+     job.setHeritatedSkill(jobAddForm.getHeritatedSkill());
+     job.setSkillToChoose(jobAddForm.getSkillToChoose());
+
+     this.jobService.save(job);
+     return ResponseEntity.ok(JobDTO.toDTO(job));
+    }
 
     @DeleteMapping("/{id:[0-9]+}")
     public ResponseEntity<JobDTO> deleteAction(
@@ -41,14 +68,6 @@ public class JobController {
         return ResponseEntity.ok(JobDTO.toDTO(job));
     }
 
-    @PostMapping("")
-    public ResponseEntity<JobDTO> addJobAction(
-            @Valid @RequestBody JobAddForm jobAddForm
-    ){
-        Job job = new Job();
-        job = this.jobService.save(jobAddForm.toBll());
-        return ResponseEntity.ok(JobDTO.toDTO(job));
-    }
 
 
 

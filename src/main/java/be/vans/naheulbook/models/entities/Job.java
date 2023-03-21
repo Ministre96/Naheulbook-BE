@@ -4,6 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 

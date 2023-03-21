@@ -1,13 +1,11 @@
 package be.vans.naheulbook.models.entities;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -18,6 +16,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@SuperBuilder
+@EntityListeners(value= {AuditingEntityListener.class})
 public abstract  class BaseEntity<TKey extends Serializable> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,5 +26,5 @@ public abstract  class BaseEntity<TKey extends Serializable> {
     private LocalDate createdAt;
     @LastModifiedDate
     private LocalDate updatedAt;
-    private boolean active;
+    private boolean active = true;
 }
