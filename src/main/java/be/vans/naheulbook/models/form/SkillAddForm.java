@@ -21,7 +21,7 @@ public class SkillAddForm {
     public Skill toBll(){
         return Skill.builder()
                 .name(name)
-                .desription(description)
+                .description(description)
                 .build();
     }
 }

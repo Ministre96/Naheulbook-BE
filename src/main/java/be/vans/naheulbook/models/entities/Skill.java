@@ -18,11 +18,7 @@ public class Skill extends BaseEntity<Integer>{
     @Column(nullable = false)
     private String name;
 
-    private String desription;
+    private String description;
 
-    @ManyToMany
-    private List<Origin> originAccessibilities;
-    @ManyToMany
-    private List<Job> jobAccessibilities;
 
 }

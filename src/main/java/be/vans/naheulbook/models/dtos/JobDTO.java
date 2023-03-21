@@ -16,13 +16,13 @@ public class JobDTO {
 
     private String name;
 
-    private String desription;
+    private String description;
 
     private List<Characteristic> requierement;
 
     private List<Skill> heritatedSkill;
 
-    private List<Skill> skillToChose;
+    private List<Skill> skillToChoose;
 
     private List<Origin> bannedOrigin;
 
@@ -30,10 +30,10 @@ public class JobDTO {
         JobDTO.JobDTOBuilder dto = JobDTO.builder();
         return dto
                 .name(job.getName())
-                .desription(job.getDesription())
+                .description(job.getDescription())
                 .requierement(job.getRequierement())
                 .heritatedSkill(job.getHeritatedSkill())
-                .skillToChose(job.getSkillToChose())
+                .skillToChoose(job.getSkillToChoose())
                 .bannedOrigin(job.getBannedOrigin())
                 .build();
     }

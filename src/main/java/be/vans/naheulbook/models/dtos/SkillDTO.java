@@ -17,20 +17,17 @@ public class SkillDTO {
     private int id;
     private String name;
 
-    private String desription;
+    private String description;
 
     private List<Origin> originAccessibilities;
 
-    private List<Job> jobAccessibilities;
 
     public static SkillDTO toDTO(Skill skill) {
         SkillDTO.SkillDTOBuilder dto = SkillDTO.builder();
         return dto
                 .id(skill.getId())
                 .name(skill.getName())
-                .desription(skill.getDesription())
-                .originAccessibilities(skill.getOriginAccessibilities())
-                .jobAccessibilities(skill.getJobAccessibilities())
+                .description(skill.getDescription())
                 .build();
     }
 

@@ -50,4 +50,6 @@ public abstract class CrudServiceImpl<
     public Stream<TEntity> readAll(Pageable pageable) {
         return this.repository.findAll(pageable).stream();
     }
+
+
 }

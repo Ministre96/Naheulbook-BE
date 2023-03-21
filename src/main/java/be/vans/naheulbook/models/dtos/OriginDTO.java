@@ -22,17 +22,17 @@ public class OriginDTO {
 
     private List<Skill> heritatedSkill;
 
-    private List<Skill> skillToChose;
+    private List<Skill> skillToChoose;
 
     public static OriginDTO toDTO(Origin origin) {
         OriginDTO.OriginDTOBuilder dto = OriginDTO.builder();
         return dto
                 .id(origin.getId())
                 .name(origin.getName())
-                .description(origin.getDesription())
+                .description(origin.getDescription())
                 .requierements(origin.getRequierements())
                 .heritatedSkill(origin.getHeritatedSkill())
-                .skillToChose(origin.getSkillToChose())
+                .skillToChoose(origin.getSkillToChoose())
                 .build();
     }
 }

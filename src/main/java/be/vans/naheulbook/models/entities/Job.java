@@ -19,7 +19,7 @@ public class Job extends BaseEntity<Integer> {
     @Column(nullable = false)
     private String name;
 
-    private String desription;
+    private String description;
 
     @ManyToMany()
     private List<Characteristic> requierement;
@@ -28,7 +28,7 @@ public class Job extends BaseEntity<Integer> {
     private List<Skill> heritatedSkill;
 
     @ManyToMany(targetEntity = Skill.class)
-    private List<Skill> skillToChose;
+    private List<Skill> skillToChoose;
 
     @ManyToMany()
     private List<Origin> bannedOrigin;

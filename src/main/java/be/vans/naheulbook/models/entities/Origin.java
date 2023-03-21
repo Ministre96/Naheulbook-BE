@@ -18,7 +18,7 @@ public class Origin extends BaseEntity<Integer>{
     @Column(nullable = false)
     private String name;
 
-    private String desription;
+    private String description;
 
     @ManyToMany()
     private List<Characteristic> requierements;
@@ -27,5 +27,5 @@ public class Origin extends BaseEntity<Integer>{
     private List<Skill> heritatedSkill;
 
     @ManyToMany(targetEntity = Skill.class)
-    private List<Skill> skillToChose;
+    private List<Skill> skillToChoose;
 }

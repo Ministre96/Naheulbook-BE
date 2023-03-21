@@ -24,14 +24,14 @@ public class OriginAddForm {
     private String description;
     private List<Characteristic> requierements;
     private List<Skill> heritatedSkill;
-    private List<Skill> skillToChose;
+    private List<Skill> skillToChoose;
     public Origin toBll(){
         return Origin.builder()
                 .name(name)
-                .desription(description)
+                .description(description)
                 .requierements(requierements)
                 .heritatedSkill(heritatedSkill)
-                .skillToChose(skillToChose)
+                .skillToChoose(skillToChoose)
                 .build();
     }
 }
