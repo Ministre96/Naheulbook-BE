@@ -19,9 +19,6 @@ public class SkillDTO {
 
     private String description;
 
-    private List<Origin> originAccessibilities;
-
-
     public static SkillDTO toDTO(Skill skill) {
         SkillDTO.SkillDTOBuilder dto = SkillDTO.builder();
         return dto

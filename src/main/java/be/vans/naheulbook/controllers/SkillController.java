@@ -32,7 +32,17 @@ public class SkillController {
     public ResponseEntity<Collection<SkillDTO>> getAllAction(
             Pageable pageable
     ){
-        return ResponseEntity.ok(this.skillService.readAll(pageable).map(SkillDTO:: toDTO).toList());
+        return ResponseEntity.ok(this.skillService.readAllByActive(pageable).map(SkillDTO:: toDTO).toList());
+    }
+
+    @GetMapping("/{id:[0-9]+}")
+    public ResponseEntity<SkillDTO> getOneAction(
+            @PathVariable int id
+    ){
+        Skill skill = new Skill();
+        skill = this.skillService.readOneByKey(id).orElseThrow(() ->
+                new HttpNotFoundException("There no skill with id:("+ id +")"));
+        return ResponseEntity.ok(SkillDTO.toDTO(skill));
     }
 
     @PostMapping("")
@@ -49,7 +59,7 @@ public class SkillController {
     }
 
     @PutMapping(path="/{id:[0-9]+}")
-    public ResponseEntity<SkillDTO> updateOne(
+    public ResponseEntity<SkillDTO> updateOneAction(
             @PathVariable int id,
             @Valid @RequestBody SkillAddForm skillAddForm
     ){

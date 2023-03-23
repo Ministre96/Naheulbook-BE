@@ -5,7 +5,9 @@ import be.vans.naheulbook.exceptions.HttpPreConditionFailedException;
 import be.vans.naheulbook.models.dtos.CharacterDTO;
 import be.vans.naheulbook.models.dtos.JobDTO;
 import be.vans.naheulbook.models.dtos.OriginDTO;
+import be.vans.naheulbook.models.dtos.SkillDTO;
 import be.vans.naheulbook.models.entities.Origin;
+import be.vans.naheulbook.models.entities.Skill;
 import be.vans.naheulbook.models.form.OriginAddForm;
 import be.vans.naheulbook.services.character.CharacterService;
 import be.vans.naheulbook.services.origin.OriginService;
@@ -31,7 +33,16 @@ public class OriginController {
     public ResponseEntity<Collection<OriginDTO>> getAllAction(
             Pageable pageable
     ){
-        return ResponseEntity.ok(this.originService.readAll(pageable).map(OriginDTO:: toDTO).toList());
+        return ResponseEntity.ok(this.originService.readAllByActive(pageable).map(OriginDTO:: toDTO).toList());
+    }
+    @GetMapping("/{id:[0-9]+}")
+    public ResponseEntity<OriginDTO> getOneAction(
+            @PathVariable int id
+    ){
+        Origin origin = new Origin();
+        origin = this.originService.readOneByKey(id).orElseThrow(() ->
+                new HttpNotFoundException("There no skill with id:("+ id +")"));
+        return ResponseEntity.ok(OriginDTO.toDTO(origin));
     }
 
     @PostMapping("")

@@ -2,7 +2,9 @@ package be.vans.naheulbook.controllers;
 
 import be.vans.naheulbook.exceptions.HttpNotFoundException;
 import be.vans.naheulbook.models.dtos.JobDTO;
+import be.vans.naheulbook.models.dtos.OriginDTO;
 import be.vans.naheulbook.models.entities.Job;
+import be.vans.naheulbook.models.entities.Origin;
 import be.vans.naheulbook.models.form.JobAddForm;
 import be.vans.naheulbook.services.job.JobService;
 import jakarta.validation.Valid;
@@ -29,6 +31,16 @@ public class JobController {
     ){
 
         return ResponseEntity.ok(this.jobService.readAllByActive(pageable).map(JobDTO :: toDTO).toList());
+    }
+
+    @GetMapping("/{id:[0-9]+}")
+    public ResponseEntity<JobDTO> getOneAction(
+            @PathVariable int id
+    ){
+        Job job = new Job();
+        job = this.jobService.readOneByKey(id).orElseThrow(() ->
+                new HttpNotFoundException("There no skill with id:("+ id +")"));
+        return ResponseEntity.ok(JobDTO.toDTO(job));
     }
 
     @PostMapping("")
@@ -63,7 +75,8 @@ public class JobController {
     public ResponseEntity<JobDTO> deleteAction(
             @PathVariable int id
     ){
-        Job job = this.jobService.readOneByKey(id).orElseThrow(()-> new HttpNotFoundException("job doesn't exist "));
+        Job job = this.jobService.readOneByKey(id).orElseThrow(()->
+                new HttpNotFoundException("job doesn't exist "));
         job.setActive(false);
         this.jobService.save(job);
         return ResponseEntity.ok(JobDTO.toDTO(job));
