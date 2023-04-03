@@ -11,8 +11,8 @@ import java.util.List;
 @Builder
 public class CharacterDTO {
     private int id;
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private Sexe sexe;
     private int gold;
     private int fate;
@@ -25,8 +25,8 @@ public class CharacterDTO {
         CharacterDTO.CharacterDTOBuilder dto =CharacterDTO.builder();
         return dto
                 .id(character.getId())
-                .firstName(character.getFirstname())
-                .lastName(character.getLastname())
+                .firstname(character.getFirstname())
+                .lastname(character.getLastname())
                 .sexe(character.getSexe())
                 .gold(character.getGold())
                 .fate(character.getFate())
@@ -36,4 +36,5 @@ public class CharacterDTO {
                 .creator(character.getCreator())
                 .build();
     }
+
 }

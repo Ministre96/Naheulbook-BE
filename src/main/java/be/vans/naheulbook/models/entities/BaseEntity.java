@@ -16,7 +16,6 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-@SuperBuilder
 @EntityListeners(value= {AuditingEntityListener.class})
 public abstract  class BaseEntity<TKey extends Serializable> {
     @Id

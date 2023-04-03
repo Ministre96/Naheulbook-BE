@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 @Repository
-public interface JobRepository extends JpaRepository<Job, Integer>, JpaSpecificationExecutor {
+public interface JobRepository extends JpaRepository<Job, Integer> {
 //    @Query(value = "SELECT j FROM Job j WHERE j.active = true")
     Page<Job> findAllByActive(boolean active, Pageable pageable);
 }
