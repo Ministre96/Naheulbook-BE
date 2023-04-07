@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -38,9 +39,11 @@ public class CharacterController {
         return ResponseEntity.ok(characters);
     }
 
+
     @PostMapping("")
     public ResponseEntity<CharacterDTO> addCharacterAction(
             @Valid @RequestBody CharacterAddForm characterAddForm
+
     ){
         Character character = new Character();
         character = this.characterService.save(characterAddForm.toBll());
